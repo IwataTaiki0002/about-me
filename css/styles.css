@@ -1,59 +1,143 @@
+@charset "UTF-8";
+
+html {
+    font-size: 100%;
+}
+/* リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 0 1rem;
+  line-height: 1.6;
 }
+
+/* ヘッダー */
 header {
-    background-color: #4682b4;
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  background-color: #007acc;
+  color: white;
+  padding: 1rem;
+  position: relative;
 }
 
-.nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.nav ul li {
-    display: inline;
-    margin-right: 1rem;
-}
-
-.nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.footer {
-    text-align: center;
-    padding: 3rem;
-    background: #333;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-@media (max-width: 600px) {
-    .header, .footer {
-        padding: 1rem;
-    }
-
-    .nav ul li {
-        display: block;
-        margin: 0.5rem 0;
-    }
-}
-.page-title {
-  font-size: 3rem;
-  margin-top: 2rem;
-  line-height: 1.4;
+header h1 {
   text-align: center;
+  margin-bottom: 0.5rem;
 }
+
+/* ハンバーガー */
+.hamburger {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* ナビゲーション */
+nav {
+  background-color: #007acc;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  /* 高さは自動で中身に合わせる */
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* メニュー項目 */
+.menu li {
+  border-bottom: 1px solid #eee;
+}
+
+.menu li a {
+  display: block;
+  padding: 1rem;
+  color: white;
+  text-decoration: none;
+  background-color: #007acc;
+}
+
+.menu li a:hover {
+  background-color: #005f99;
+}
+
+.menu a,
+.dropdown-toggle {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ドロップダウン */
+.dropdown-content {
+  display: none;
+  background-color: #005f99;
+  min-width: 160px;
+  border-radius: 8px;
+  z-index: 1000;
+  margin-top: 0.5rem;
+}
+
+.dropdown-content li {
+  border-bottom: 1px solid #ccc;
+}
+
+.dropdown-content a {
+  padding: 0.5rem 1rem;
+  color: white;
+  display: block;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+/* メイン */
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  border-bottom: 2px solid #007acc;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* フッター */
+footer {
+  text-align: center;
+  background-color: #eee;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* メニュー展開時 */
+nav.open {
+  transform: scaleY(1);
+}
+JavaScript制御に切り替えてより滑らかに
+メニューを上部固定（スクロール追従）
