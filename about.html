@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
+  <title>About me</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -70,60 +70,29 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    img {
-      max-width: 150px;
-      border-radius: 50%;
-    }
-    h2 {
-      color: #333;
-      margin-block-start: 0.83em;
-      margin-block-end: 0.83em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      font-family: 'Philosopher', sans-serif;
-      unicode-bidi: isolate;
-    }
-    .back-to-top-fixed {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background-color: #4682b4;
-      color: white;
-      padding: 0.75rem 1rem;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 1000;
-    }
-    .back-to-top-fixed:hover {
-      background-color: #5a9bd6;
-    }
     footer {
       background-color: #4682b4;
       color: white;
       text-align: center;
       padding: 1rem 2rem;
     }
-
-    /* スマホ対応 */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
         align-items: flex-start;
       }
       .menu-content {
-        right: auto;
         left: 0;
+        right: auto;
       }
     }
   </style>
   <script>
     function toggleMenu() {
       const menu = document.getElementById("menu-content");
-      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
-
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', function(e) {
       const menu = document.getElementById("menu-content");
       const button = document.getElementById("menu-button");
       if (!menu.contains(e.target) && !button.contains(e.target)) {
@@ -134,26 +103,21 @@
 </head>
 <body>
   <header>
-    <h1 id="top">Home</h1>
+    <h1>About me</h1>
     <nav>
       <button id="menu-button" class="menu-button" onclick="toggleMenu()">Menu</button>
       <div id="menu-content" class="menu-content">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About me</a>
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About me</a>
         <a href="hobby.html">Hobby</a>
         <a href="skill.html">Skills</a>
         <a href="contact.html">Contact</a>
       </div>
     </nav>
   </header>
-    <h2 class="page-title fony-english">Welcomr to my website!</h2>
   <main>
-    <img src="https://via.placeholder.com/150" alt="プロフィール写真" />
-    <p>こちらは岩田大己の自己紹介サイトです。上のメニューから各項目にアクセスできます。</p>
+    <p>こんにちは、岩田大己です。Web制作やプログラミングが好きで、日々学習を続けています。</p>
   </main>
-
-  <a href="#top" class="back-to-top-fixed">↑</a>
-
   <footer>
     <p>&copy; 2025 岩田大己. All rights reserved.</p>
   </footer>
