@@ -16,8 +16,11 @@ body {
   background-color: #f9f9f9;
   color: #333;
   padding: 0 1rem;
-  padding-top: 80px; /* 固定ヘッダーの高さ分を確保 */
+  padding-top: 75px; /* 固定ヘッダーの高さ分を確保 */
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* 段落の間隔を広げる */
@@ -41,7 +44,7 @@ ul {
 header {
   background-color: #007acc;
   color: white;
-  padding: 1rem;
+  padding: 1.5rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -56,7 +59,7 @@ header {
 header h1 {
   text-align: center;
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
 }
 
 /* ハンバーガー */
@@ -67,12 +70,16 @@ header h1 {
   transform: translateY(-50%);
   background: none;
   border: none;
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   color: white;
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 4px;
   transition: background-color 0.3s ease;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hamburger:hover {
@@ -170,6 +177,7 @@ nav {
 main {
   max-width: 800px;
   margin: 4rem auto 2rem auto;
+  flex: 1;
 }
 
 section {
@@ -189,13 +197,66 @@ h2 {
   text-indent: 1rem;
 }
 
+/* 趣味セクション内のh3と段落の間隔調整 */
+#hobbies h3 {
+  margin-bottom: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+/* 趣味セクション内の段落の下部間隔調整 */
+#hobbies p {
+  margin-bottom: 2.5rem;
+}
+
+/* 趣味セクションの文字を右に移動 */
+#hobbies {
+  padding-left: 2rem;
+}
+
+/* 趣味セクションの全ての要素を右に移動、見出しは元の位置 */
+#hobbies h3,
+#hobbies p,
+#hobbies img {
+  margin-left: -1.5rem;
+}
+
+/* 趣味セクションの見出しは元の位置に戻す */
+#hobbies h2 {
+  margin-left: -2rem;
+}
+
+/* recent-gamesセクションの段落を下に移動 */
+#recent-games p {
+  margin-top: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+/* recent-gamesセクションの画像サイズ調整 */
+#recent-games img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin-top: 0.5rem;
+}
+
 /* フッター */
 footer {
   text-align: center;
   background-color: #eee;
-  padding: 1rem;
+  padding: 2rem 1rem;
   font-size: 1rem;
-  margin-top: 2rem;
+  margin-top: auto;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+footer p {
+  margin: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 /* 連絡先ページ用スタイル */
