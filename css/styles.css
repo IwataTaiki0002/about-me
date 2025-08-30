@@ -23,6 +23,11 @@ body {
   flex-direction: column;
 }
 
+/* ボディ部分の見出しの色を統一 */
+main h1, main h2, main h3, main h4, main h5, main h6 {
+  color: #007acc;
+}
+
 /* 段落の間隔を広げる */
 p {
   margin-bottom: 1.5rem;
@@ -129,8 +134,9 @@ nav {
   padding: 1.2rem 0;
   /* 文字の配置設定 */
   text-align: left;
-  padding-left: calc(50vw - 50% + 0.5rem);
+  padding-left: 2rem;
   box-sizing: border-box;
+  position: relative;
 }
 
 .menu li a:hover {
@@ -304,6 +310,8 @@ footer p {
 
 .contact-item p {
   margin: 0;
+  padding-left: 0;
+  text-indent: 0;
 }
 
 .contact-item a {
