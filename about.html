@@ -32,6 +32,29 @@
       <p class="fade-in-up">岩田大己 (いわた たいき) と申します。滋賀出身の京都TECH在学生です。犬を飼ってます。</p>
       <div style="height: 2em;"></div>
     <p class="fade-in-up">趣味はゲームで、とにかく遊ぶことが大好きです。</p>
+    
+    <!-- 画像スライダー -->
+    <div class="image-slider fade-in-up">
+      <div class="slider-container">
+        <div class="slide active">
+          <img src="images/6d760f63-15af-451d-b89a-c937f77555fc.jpg" alt="ゲーム画像1">
+        </div>
+        <div class="slide">
+          <img src="images/shared image (1).jpeg" alt="ゲーム画像2">
+        </div>
+        <div class="slide">
+          <img src="images/shared image.jpeg" alt="ゲーム画像3">
+        </div>
+      </div>
+      <button class="slider-btn prev-btn" onclick="changeSlide(-1)">&#8249;</button>
+      <button class="slider-btn next-btn" onclick="changeSlide(1)">&#8250;</button>
+      <div class="slider-dots">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+    
     <div class="shiga-image-container">
       <img src="images/5_kinki2_shiga.png" alt="滋賀" class="shiga-image">
     </div>

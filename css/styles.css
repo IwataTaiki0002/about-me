@@ -13,7 +13,7 @@ html {
 body {
   font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   font-size: 1.5rem;
-  background: linear-gradient(to right, #ccf2ff 0%, #ccf2ff 20%, #f9f9f9 20%, #f9f9f9 80%, #ccf2ff 80%, #ccf2ff 100%);
+  background: linear-gradient(to right, #ccf2ff 0%, #ccf2ff calc(50% - 400px), #f9f9f9 calc(50% - 400px), #f9f9f9 calc(50% + 400px), #ccf2ff calc(50% + 400px), #ccf2ff 100%);
   color: #333;
   padding: 0 1rem;
   padding-top: 75px; /* 固定ヘッダーの高さ分を確保 */
@@ -410,6 +410,97 @@ nav.open {
   transform: scaleY(1);
 }
 
+/* 画像スライダー */
+.image-slider {
+  position: relative;
+  max-width: 600px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 2px solid #e0e0e0;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  background: white;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.active {
+  display: flex;
+}
+
+.slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: white;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 122, 204, 0.8);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  z-index: 10;
+  font-weight: bold;
+}
+
+.slider-btn:hover {
+  background: rgba(0, 122, 204, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: 15px;
+}
+
+.next-btn {
+  right: 15px;
+}
+
+.slider-dots {
+  text-align: center;
+  padding: 1rem;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active, .dot:hover {
+  background-color: #007acc;
+  transform: scale(1.2);
+}
+
 /* レスポンシブデザイン */
 
 /* タブレット向け（768px以下） */
@@ -502,6 +593,29 @@ nav.open {
   .shiga-image {
     height: 150px;
     margin-right: 0;
+  }
+  
+  /* 画像スライダーの調整 */
+  .image-slider {
+    max-width: 95%;
+    margin: 1.5rem auto;
+  }
+  
+  .slider-container {
+    height: 350px;
+  }
+  
+  .slider-btn {
+    font-size: 1.5rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .prev-btn {
+    left: 10px;
+  }
+  
+  .next-btn {
+    right: 10px;
   }
 }
 
@@ -597,6 +711,22 @@ nav.open {
     height: 120px;
   }
   
+  /* 画像スライダーの調整 */
+  .slider-container {
+    height: 280px;
+  }
+  
+  .slider-btn {
+    font-size: 1.3rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+  }
+  
   /* 連絡先ページの調整 */
   .contact-item {
     padding: 0.6rem;
@@ -681,5 +811,29 @@ nav.open {
   /* about.htmlページの調整 */
   .shiga-image {
     height: 100px;
+  }
+  
+  /* 画像スライダーの調整 */
+  .slider-container {
+    height: 220px;
+  }
+  
+  .slider-btn {
+    font-size: 1.1rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .prev-btn {
+    left: 5px;
+  }
+  
+  .next-btn {
+    right: 5px;
+  }
+  
+  .dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 3px;
   }
 }
