@@ -29,7 +29,7 @@
   --bg-card: #1e1e3f;          /* カードの背景 - 少し明るい夜空 */
   --bg-contact: #151530;        /* 連絡先エリアの背景 */
   --bg-welcome: #1a1a3a;       /* ウェルカムメッセージの背景 */
-  --text-primary: #e6e6fa;     /* ラベンダー色のテキスト */
+  --text-primary: #e3f2fd;     /* ラベンダー色のテキスト */
   --text-secondary: #b8b8d4;   /* 月光のような薄紫のテキスト */
   --accent-primary: #4a5a7a;   /* 夜空の青紫 */
   --accent-hover: #6a7a9a;     /* より明るい青紫 - ホバー時 */
@@ -40,7 +40,7 @@
   --shadow-color: rgba(0, 0, 0, 0.6);  /* より深い影 */
   --welcome-shadow: rgba(255, 107, 148, 0.2);  /* ピンクの影 */
   --slider-bg: #1e1e3f;       /* スライダーの背景 */
-  --footer-bg: #151530;       /* フッターの背景 */
+  --footer-bg: #4a5a7a;       /* フッターの背景 - ヘッダーと同じ色 */
 }
 
 html {
@@ -315,7 +315,7 @@ h2 {
 /* フッター */
 footer {
   text-align: center;
-  background-color: #eee;
+  background-color: var(--footer-bg);
   padding: 2rem 1rem;
   font-size: 1rem;
   margin-top: auto;
@@ -388,6 +388,77 @@ footer p {
 
 .contact-item a:hover {
   text-decoration: underline;
+}
+
+/* 連絡先ページの連絡項目の背景色をダークモード時のみ変更 */
+[data-theme="dark"] .contact-item {
+  background-color: #e3f2fd; /* ライトブルー */
+}
+
+/* 連絡先ページの説明文の背景色をダークモード時のみ変更 */
+[data-theme="dark"] .contact-info > p {
+  background-color: #e3f2fd; /* ライトブルー */
+}
+
+/* 送信ボタンの文字色をダークモード時のみ変更 */
+[data-theme="dark"] .submit-btn {
+  color: #e3f2fd; /* ライトブルー */
+}
+
+/* 連絡フォーム用スタイル */
+.contact-form {
+  margin-top: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--accent-primary);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.1);
+}
+
+.submit-btn {
+  background-color: var(--accent-primary);
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
 }
 
 /* 戯言ページ用スタイル */
@@ -651,6 +722,18 @@ nav.open {
     padding: 0.8rem;
   }
 
+  /* フォームのレスポンシブ調整 */
+  .form-group input,
+  .form-group textarea {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+  }
+
   /* 戯言ページの調整 */
   article {
     padding: 1rem;
@@ -909,4 +992,29 @@ nav.open {
     width: 10px;
     margin: 0 3px;
   }
+}
+
+/* 連絡先ページの説明文のダークモード時の色変更 */
+[data-theme="dark"] .contact-description {
+  color: #4a5a7a; /* 夜空の青紫 */
+}
+
+/* 連絡先ページの所在地のダークモード時の色変更 */
+[data-theme="dark"] .contact-location {
+  color: #4a5a7a; /* 夜空の青紫 */
+}
+
+/* 戯言ページの文章のダークモード時の色変更 */
+[data-theme="dark"] #random-thoughts p {
+  color: #4a5a7a; /* 夜空の青紫 */
+}
+
+/* 戯言ページの記事の背景色をダークモード時のみ変更 */
+[data-theme="dark"] #random-thoughts article {
+  background-color: #e3f2fd; /* ライトブルー */
+}
+
+/* 連絡先ページの連絡項目の背景色をダークモード時のみ変更 */
+[data-theme="dark"] .contact-item {
+  background-color: #e3f2fd; /* ライトブルー */
 }

@@ -33,6 +33,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // 連絡フォームの処理
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(contactForm);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
+      
+      // フォーム送信の処理（実際の送信処理はここに実装）
+      alert(`お問い合わせありがとうございます！\n\nお名前: ${data.name}\nメール: ${data.email}\n件名: ${data.subject}\n\nメッセージを受け付けました。`);
+      
+      // フォームをリセット
+      contactForm.reset();
+    });
+  }
+
   // ウィンドウリサイズ時にメニューが開いていたら高さを再計算して調整
   window.addEventListener("resize", () => {
     if (navMenu.classList.contains("open")) {
