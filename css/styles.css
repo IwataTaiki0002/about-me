@@ -20,6 +20,7 @@
   --welcome-shadow: rgba(220,53,69,0.08);
   --slider-bg: white;
   --footer-bg: #eee;
+  --header-bg: #007acc;
 }
 
 /* ダークモードの色 - 夜をイメージした色合い */
@@ -31,8 +32,8 @@
   --bg-welcome: #1a1a3a;       /* ウェルカムメッセージの背景 */
   --text-primary: #e3f2fd;     /* ラベンダー色のテキスト */
   --text-secondary: #b8b8d4;   /* 月光のような薄紫のテキスト */
-  --accent-primary: #4a5a7a;   /* 夜空の青紫 */
-  --accent-hover: #6a7a9a;     /* より明るい青紫 - ホバー時 */
+  --accent-primary: #5a7adf;   /* 少し暗めの青紫 */
+  --accent-hover: #7a9aff;     /* ホバー時の青紫 */
   --accent-red: #ff6b94;       /* 夜の花の色 */
   --border-color: #2e2e5a;     /* 境界線 - 夜空の雲の色 */
   --border-menu: #3a3a6b;      /* メニューの境界線 */
@@ -41,6 +42,7 @@
   --welcome-shadow: rgba(255, 107, 148, 0.2);  /* ピンクの影 */
   --slider-bg: #1e1e3f;       /* スライダーの背景 */
   --footer-bg: #4a5a7a;       /* フッターの背景 - ヘッダーと同じ色 */
+  --header-bg: #4a5a7a;       /* ヘッダーの背景 */
 }
 
 html {
@@ -90,7 +92,7 @@ ul {
 
 /* ヘッダー */
 header {
-  background-color: var(--accent-primary);
+  background-color: var(--header-bg);
   color: white;
   padding: 1.5rem;
   position: fixed;
@@ -160,7 +162,7 @@ header h1 {
 
 /* ナビゲーション */
 nav {
-  background-color: var(--accent-primary);
+  background-color: var(--header-bg);
   transform-origin: top;
   transform: scaleY(0);
   transition: transform 0.3s ease;
@@ -193,7 +195,7 @@ nav {
   display: block;
   color: white;
   text-decoration: none;
-  background-color: var(--accent-primary);
+  background-color: var(--header-bg);
   font-size: 1.2rem;
   /* 選択範囲の設定 */
   width: 100vw;
