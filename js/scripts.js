@@ -1,10 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("nav-menu");
+  const themeToggle = document.getElementById("theme-toggle");
 
+  // ハンバーガーメニューの制御
   hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("open");
   });
+
+  // ダークモード切り替え機能
+  if (themeToggle) {
+    // ローカルストレージからテーマ設定を読み込み
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeIcon(savedTheme);
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+  }
+
+  function updateThemeIcon(theme) {
+    if (themeToggle) {
+      themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+  }
 
   // ウィンドウリサイズ時にメニューが開いていたら高さを再計算して調整
   window.addEventListener("resize", () => {
