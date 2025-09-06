@@ -13,7 +13,7 @@ html {
 body {
   font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   font-size: 1.5rem;
-  background-color: #f9f9f9;
+  background: linear-gradient(to right, #ccf2ff 0%, #ccf2ff 20%, #f9f9f9 20%, #f9f9f9 80%, #ccf2ff 80%, #ccf2ff 100%);
   color: #333;
   padding: 0 1rem;
   padding-top: 75px; /* 固定ヘッダーの高さ分を確保 */
@@ -397,6 +397,12 @@ article small {
   font-weight: bold;
   border-bottom: none;
   letter-spacing: 0.3rem;
+  background: #e3f2fd;
+  border: 6px solid #64b5f6;
+  border-radius: 2rem;
+  padding: 2rem 2.5rem;
+  display: inline-block;
+  box-shadow: 0 4px 16px rgba(220,53,69,0.08);
 }
 
 /* メニュー展開時 */
