@@ -1,5 +1,50 @@
 @charset "UTF-8";
 
+/* CSS変数定義 */
+:root {
+  /* ライトモード（デフォルト）の色 */
+  --bg-primary: #f9f9f9;
+  --bg-secondary: #ccf2ff;
+  --bg-card: #f8f9fa;
+  --bg-contact: #f0f8ff;
+  --bg-welcome: #e3f2fd;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --accent-primary: #007acc;
+  --accent-hover: #005f99;
+  --accent-red: #dc3545;
+  --border-color: #e0e0e0;
+  --border-menu: #eee;
+  --border-contact: #007acc;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --welcome-shadow: rgba(220,53,69,0.08);
+  --slider-bg: white;
+  --footer-bg: #eee;
+  --header-bg: #007acc;
+}
+
+/* ダークモードの色 - 夜をイメージした色合い */
+[data-theme="dark"] {
+  --bg-primary: #0f0f23;        /* 深い夜空の色 */
+  --bg-secondary: #2a2a4a;      /* 夜明け前の空の色 */
+  --bg-card: #1e1e3f;          /* カードの背景 - 少し明るい夜空 */
+  --bg-contact: #151530;        /* 連絡先エリアの背景 */
+  --bg-welcome: #1a1a3a;       /* ウェルカムメッセージの背景 */
+  --text-primary: #e3f2fd;     /* ラベンダー色のテキスト */
+  --text-secondary: #b8b8d4;   /* 月光のような薄紫のテキスト */
+  --accent-primary: #5a7adf;   /* 少し暗めの青紫 */
+  --accent-hover: #7a9aff;     /* ホバー時の青紫 */
+  --accent-red: #ff6b94;       /* 夜の花の色 */
+  --border-color: #2e2e5a;     /* 境界線 - 夜空の雲の色 */
+  --border-menu: #3a3a6b;      /* メニューの境界線 */
+  --border-contact: #4a5a7a;   /* 連絡先の境界線 */
+  --shadow-color: rgba(0, 0, 0, 0.6);  /* より深い影 */
+  --welcome-shadow: rgba(255, 107, 148, 0.2);  /* ピンクの影 */
+  --slider-bg: #1e1e3f;       /* スライダーの背景 */
+  --footer-bg: #4a5a7a;       /* フッターの背景 - ヘッダーと同じ色 */
+  --header-bg: #4a5a7a;       /* ヘッダーの背景 */
+}
+
 html {
     font-size: 100%;
 }
@@ -13,8 +58,8 @@ html {
 body {
   font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   font-size: 1.5rem;
-  background: linear-gradient(to right, #ccf2ff 0%, #ccf2ff 20%, #f9f9f9 20%, #f9f9f9 80%, #ccf2ff 80%, #ccf2ff 100%);
-  color: #333;
+  background: linear-gradient(to right, var(--bg-secondary) 0%, var(--bg-secondary) calc(50% - 400px), var(--bg-primary) calc(50% - 400px), var(--bg-primary) calc(50% + 400px), var(--bg-secondary) calc(50% + 400px), var(--bg-secondary) 100%);
+  color: var(--text-primary);
   padding: 0 1rem;
   padding-top: 75px; /* 固定ヘッダーの高さ分を確保 */
   line-height: 1.6;
@@ -25,7 +70,7 @@ body {
 
 /* ボディ部分の見出しの色を統一 */
 main h1, main h2, main h3, main h4, main h5, main h6 {
-  color: #007acc;
+  color: var(--accent-primary);
 }
 
 /* 段落の間隔を広げる */
@@ -47,7 +92,7 @@ ul {
 
 /* ヘッダー */
 header {
-  background-color: #007acc;
+  background-color: var(--header-bg);
   color: white;
   padding: 1.5rem;
   position: fixed;
@@ -91,9 +136,33 @@ header h1 {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* テーマ切り替えボタン */
+.theme-toggle {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 /* ナビゲーション */
 nav {
-  background-color: #007acc;
+  background-color: var(--header-bg);
   transform-origin: top;
   transform: scaleY(0);
   transition: transform 0.3s ease;
@@ -126,7 +195,7 @@ nav {
   display: block;
   color: white;
   text-decoration: none;
-  background-color: #007acc;
+  background-color: var(--header-bg);
   font-size: 1.2rem;
   /* 選択範囲の設定 */
   width: 100vw;
@@ -140,7 +209,7 @@ nav {
 }
 
 .menu li a:hover {
-  background-color: #005f99;
+  background-color: var(--accent-hover);
 }
 
 .menu a,
@@ -197,7 +266,7 @@ section:not(#welcome) {
 
 h2 {
   font-size: 1.8rem;
-  border-bottom: 2px solid #007acc;
+  border-bottom: 2px solid var(--accent-primary);
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
   text-indent: 1rem;
@@ -248,7 +317,7 @@ h2 {
 /* フッター */
 footer {
   text-align: center;
-  background-color: #eee;
+  background-color: var(--footer-bg);
   padding: 2rem 1rem;
   font-size: 1rem;
   margin-top: auto;
@@ -321,6 +390,77 @@ footer p {
 
 .contact-item a:hover {
   text-decoration: underline;
+}
+
+/* 連絡先ページの連絡項目の背景色をダークモード時のみ変更 */
+[data-theme="dark"] .contact-item {
+  background-color: #e3f2fd; /* ライトブルー */
+}
+
+/* 連絡先ページの説明文の背景色をダークモード時のみ変更 */
+[data-theme="dark"] .contact-info > p {
+  background-color: #e3f2fd; /* ライトブルー */
+}
+
+/* 送信ボタンの文字色をダークモード時のみ変更 */
+[data-theme="dark"] .submit-btn {
+  color: #e3f2fd; /* ライトブルー */
+}
+
+/* 連絡フォーム用スタイル */
+.contact-form {
+  margin-top: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--accent-primary);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.1);
+}
+
+.submit-btn {
+  background-color: var(--accent-primary);
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
 }
 
 /* 戯言ページ用スタイル */
@@ -397,9 +537,486 @@ article small {
   font-weight: bold;
   border-bottom: none;
   letter-spacing: 0.3rem;
+  background: #e3f2fd;
+  border: 6px solid #64b5f6;
+  border-radius: 2rem;
+  padding: 2rem 2.5rem;
+  display: inline-block;
+  box-shadow: 0 4px 16px rgba(220,53,69,0.08);
 }
 
 /* メニュー展開時 */
 nav.open {
   transform: scaleY(1);
+}
+
+/* 画像スライダー */
+.image-slider {
+  position: relative;
+  max-width: 600px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 2px solid #e0e0e0;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  background: white;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.active {
+  display: flex;
+}
+
+.slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: white;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 122, 204, 0.8);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  z-index: 10;
+  font-weight: bold;
+}
+
+.slider-btn:hover {
+  background: rgba(0, 122, 204, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: 15px;
+}
+
+.next-btn {
+  right: 15px;
+}
+
+.slider-dots {
+  text-align: center;
+  padding: 1rem;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active, .dot:hover {
+  background-color: #007acc;
+  transform: scale(1.2);
+}
+
+/* リスポンシブデザイン */
+
+/* タブレット向け（768px以下） */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 1.3rem;
+    padding: 0 0.5rem;
+    padding-top: 70px;
+    background: white;
+  }
+
+  header {
+    padding: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .hamburger {
+    font-size: 2.2rem;
+    right: 0.5rem;
+  }
+
+  .theme-toggle {
+    font-size: 1.5rem;
+    left: 0.5rem;
+    padding: 0.4rem;
+  }
+
+  main {
+    margin: 3rem auto 1.5rem auto;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    text-indent: 0.5rem;
+  }
+
+  /* Welcome メッセージのレスポンシブ */
+  .welcome-title {
+    font-size: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  /* プロフィール欄の調整 */
+  .profile-label {
+    width: 70px;
+    margin-right: 20px;
+  }
+
+  #profile::before {
+    left: 85px;
+    top: 3rem;
+  }
+
+  /* 趣味セクションの調整 */
+  #hobbies {
+    padding-left: 1rem;
+  }
+
+  #hobbies h3,
+  #hobbies p,
+  #hobbies img {
+    margin-left: -0.5rem;
+  }
+
+  #hobbies h2 {
+    margin-left: -1rem;
+  }
+
+  /* 連絡先ページの調整 */
+  .contact-info {
+    max-width: 100%;
+  }
+
+  .contact-item {
+    padding: 0.8rem;
+  }
+
+  /* フォームのレスポンシブ調整 */
+  .form-group input,
+  .form-group textarea {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+  }
+
+  /* 戯言ページの調整 */
+  article {
+    padding: 1rem;
+  }
+
+  /* about.htmlページの調整 */
+  .shiga-image-container {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .shiga-image {
+    height: 150px;
+    margin-right: 0;
+  }
+  
+  /* 画像スライダーの調整 */
+  .image-slider {
+    max-width: 95%;
+    margin: 1.5rem auto;
+  }
+  
+  .slider-container {
+    height: 350px;
+  }
+  
+  .slider-btn {
+    font-size: 1.5rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .prev-btn {
+    left: 10px;
+  }
+  
+  .next-btn {
+    right: 10px;
+  }
+}
+
+/* スマートフォン向け（480px以下） */
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 1.2rem;
+    padding: 0 0.3rem;
+    padding-top: 65px;
+    background: white;
+  }
+
+  header {
+    padding: 0.8rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .hamburger {
+    font-size: 2rem;
+    right: 0.3rem;
+    padding: 0.3rem;
+  }
+
+  main {
+    margin: 2rem auto 1rem auto;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    text-indent: 0;
+  }
+
+  /* Welcome メッセージのレスポンシブ */
+  .welcome-title {
+    font-size: 2.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.5rem;
+    letter-spacing: 0.1rem;
+    border-width: 4px;
+  }
+
+  /* プロフィール欄の調整 */
+  .profile-label {
+    width: 60px;
+    margin-right: 15px;
+    font-size: 0.9rem;
+  }
+
+  #profile::before {
+    left: 75px;
+    top: 2.8rem;
+  }
+
+  .profile-label.birthday {
+    text-indent: -0.5rem;
+  }
+
+  /* 趣味セクションの調整 */
+  #hobbies {
+    padding-left: 0.5rem;
+  }
+
+  #hobbies h3,
+  #hobbies p,
+  #hobbies img {
+    margin-left: 0;
+  }
+
+  #hobbies h2 {
+    margin-left: -0.5rem;
+  }
+
+  #hobbies h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  #hobbies p {
+    margin-bottom: 2rem;
+  }
+
+  /* recent-gamesセクションの調整 */
+  #recent-games p {
+    margin-top: 1rem;
+  }
+
+  /* about.htmlページの調整 */
+  .shiga-image {
+    height: 120px;
+  }
+  
+  /* 画像スライダーの調整 */
+  .slider-container {
+    height: 280px;
+  }
+  
+  .slider-btn {
+    font-size: 1.3rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+  }
+  
+  /* 連絡先ページの調整 */
+  .contact-item {
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-item strong {
+    font-size: 0.9rem;
+  }
+
+  /* 戯言ページの調整 */
+  article {
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  article h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* フッターの調整 */
+  footer {
+    padding: 1.5rem 0.5rem;
+  }
+
+  /* メニュー項目の調整 */
+  .menu li a {
+    font-size: 1.1rem;
+    padding: 1rem 0;
+    padding-left: 1rem;
+  }
+
+  /* 段落とリストの調整 */
+  p {
+    padding-left: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  li {
+    padding-left: 0.5rem;
+  }
+
+  ul {
+    padding-left: 1rem;
+  }
+}
+
+/* 極小画面向け（320px以下） */
+@media screen and (max-width: 320px) {
+  body {
+    font-size: 1.1rem;
+    background: white;
+  }
+
+  header h1 {
+    font-size: 1.3rem;
+  }
+
+  .welcome-title {
+    font-size: 1.8rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .profile-label {
+    width: 50px;
+    margin-right: 10px;
+  }
+
+  #profile::before {
+    left: 65px;
+  }
+
+  .contact-item {
+    padding: 0.5rem;
+  }
+
+  article {
+    padding: 0.6rem;
+  }
+
+  /* about.htmlページの調整 */
+  .shiga-image {
+    height: 100px;
+  }
+  
+  /* 画像スライダーの調整 */
+  .slider-container {
+    height: 220px;
+  }
+  
+  .slider-btn {
+    font-size: 1.1rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .prev-btn {
+    left: 5px;
+  }
+  
+  .next-btn {
+    right: 5px;
+  }
+  
+  .dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 3px;
+  }
+}
+
+/* 連絡先ページの説明文のダークモード時の色変更 */
+[data-theme="dark"] .contact-description {
+  color: #4a5a7a; /* 夜空の青紫 */
+}
+
+/* 連絡先ページの所在地のダークモード時の色変更 */
+[data-theme="dark"] .contact-location {
+  color: #4a5a7a; /* 夜空の青紫 */
+}
+
+/* 戯言ページの文章のダークモード時の色変更 */
+[data-theme="dark"] #random-thoughts p {
+  color: #4a5a7a; /* 夜空の青紫 */
+}
+
+/* 戯言ページの記事の背景色をダークモード時のみ変更 */
+[data-theme="dark"] #random-thoughts article {
+  background-color: #e3f2fd; /* ライトブルー */
+}
+
+/* 連絡先ページの連絡項目の背景色をダークモード時のみ変更 */
+[data-theme="dark"] .contact-item {
+  background-color: #e3f2fd; /* ライトブルー */
 }

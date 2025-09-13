@@ -1,10 +1,59 @@
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("nav-menu");
+  const themeToggle = document.getElementById("theme-toggle");
 
+  // ハンバーガーメニューの制御
   hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("open");
   });
+
+  // ダークモード切り替え機能
+  if (themeToggle) {
+    // ローカルストレージからテーマ設定を読み込み
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeIcon(savedTheme);
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+  }
+
+  function updateThemeIcon(theme) {
+    if (themeToggle) {
+      themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+  }
+
+  // 連絡フォームの処理
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(contactForm);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
+      
+      // フォーム送信の処理（実際の送信処理はここに実装）
+      alert(`お問い合わせありがとうございます！\n\nお名前: ${data.name}\nメール: ${data.email}\n件名: ${data.subject}\n\nメッセージを受け付けました。`);
+      
+      // フォームをリセット
+      contactForm.reset();
+    });
+  }
 
   // ウィンドウリサイズ時にメニューが開いていたら高さを再計算して調整
   window.addEventListener("resize", () => {
@@ -22,4 +71,70 @@ document.addEventListener("DOMContentLoaded", () => {
       element.classList.add('animate');
     }, index * 150); // 150msずつ遅延して上から順番に表示
   });
+  
+  // 画像スライダーの初期化
+  initializeSlider();
+  
+  // 自動スライド機能（5秒ごと）
+  setInterval(() => {
+    const slides = document.querySelectorAll('.slide');
+    if (slides.length > 0) {
+      changeSlide(1);
+    }
+  }, 5000);
 });
+
+// 画像スライダー機能
+let currentSlideIndex = 0;
+
+function initializeSlider() {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  
+  if (slides.length === 0) return; // スライダーが存在しない場合は何もしない
+  
+  // 最初のスライドを表示
+  showSlide(0);
+}
+
+function showSlide(index) {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  
+  if (slides.length === 0) return;
+  
+  // 全てのスライドを非表示にする
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+  
+  // 指定されたスライドを表示する
+  if (slides[index]) {
+    slides[index].classList.add('active');
+    if (dots[index]) {
+      dots[index].classList.add('active');
+    }
+  }
+}
+
+function changeSlide(direction) {
+  const slides = document.querySelectorAll('.slide');
+  if (slides.length === 0) return;
+  
+  currentSlideIndex += direction;
+  
+  // スライドが最後まで行ったら最初に戻る
+  if (currentSlideIndex >= slides.length) {
+    currentSlideIndex = 0;
+  }
+  // スライドが最初より前に行ったら最後に移動
+  if (currentSlideIndex < 0) {
+    currentSlideIndex = slides.length - 1;
+  }
+  
+  showSlide(currentSlideIndex);
+}
+
+function currentSlide(index) {
+  currentSlideIndex = index - 1; // インデックスは0から始まるため-1
+  showSlide(currentSlideIndex);
+}
